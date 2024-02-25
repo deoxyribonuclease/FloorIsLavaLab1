@@ -37,13 +37,9 @@ public class BallBounceEvent : MonoBehaviour
         if (collision.gameObject.CompareTag("Race"))
         {
             float bounceForce = rb.velocity.magnitude;
-
-            if (bounceForce >= minBounceForce)
-            {
-                float pitch = Mathf.Lerp(minPitch, maxPitch, bounceForce / 10f);
-                audioSource.pitch = pitch;
-                audioSource.PlayOneShot(bounceSound);
-            }
+            float pitch = bounceForce >= minBounceForce ? Mathf.Lerp(minPitch, maxPitch, bounceForce / 10f) : 0f;
+            audioSource.pitch = pitch;
+            audioSource.PlayOneShot(bounceSound);
         }
     }
 }

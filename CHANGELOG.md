@@ -1,7 +1,6 @@
-Scripts based on the provided examples in the ScriptsForLab2 folder.
-
-Added several objects and scripts:
-1. Script "BallMove" adds control to the ball. (Controls: WASD)
-2. Script "ObjectTracking" adds correct movement of the camera behind the object.
-3. Script "Restart" resets the level when the ball hits the lava.
-4. Script "Rotating" just makes the objects spin.
+Added several sounds and scripts:
+1. Background music.
+2. Sounds to moving objects.
+3. Script "TouchEvent" that plays a sound when the player touches the object.
+4. Script "BallBounceEvent" that plays the sound of the ball hitting the surfaces 
+(Used attributes to separate the parameters, and used the ternary operator to determine whether the ball hit is strong enough to play the sound).
