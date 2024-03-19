@@ -5,6 +5,7 @@ using UnityEngine;
 public class TouchEvent : MonoBehaviour
 {
     public AudioClip soundEffect;
+    public ParticleSystem particles;
 
     [Range(0f, 1f)]
     public float volume = 0.5f;
@@ -16,6 +17,7 @@ public class TouchEvent : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null)
         {
+            
             audioSource = gameObject.AddComponent<AudioSource>();
         }
         audioSource.volume = volume;
@@ -25,7 +27,16 @@ public class TouchEvent : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            PlaySoundEffect();
+             PlaySoundEffect();
+            PlayParticles();
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+             PlaySoundEffect();
+            PlayParticles();
         }
     }
 
@@ -34,6 +45,14 @@ public class TouchEvent : MonoBehaviour
         if (soundEffect != null && audioSource != null)
         {
             audioSource.PlayOneShot(soundEffect);
+        }
+    }
+
+    private void PlayParticles()
+    {
+        if (particles != null)
+        {
+            particles.Play();
         }
     }
 }
